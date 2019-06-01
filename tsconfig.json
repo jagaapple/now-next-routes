@@ -13,7 +13,7 @@
     "moduleResolution": "node",
     "outDir": "./lib",
     "rootDir": "./src",
-    "removeComments": true,
+    "removeComments": false,
     "sourceMap": false,
     "skipLibCheck": true,
     "strict": true,
