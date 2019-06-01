@@ -31,3 +31,8 @@ npm-debug.log
 # Generated files created by bundler.
 lib
 .next
+
+
+# Generated files created by tests.
+.nyc_output
+coverage
