@@ -1,0 +1,44 @@
+{
+  "name": "now-next-routes",
+  "version": "0.0.1",
+  "description": "Dynamic routes for Next.js on Now.",
+  "keywords": [
+    "zeit",
+    "now",
+    "next",
+    "next.js",
+    "router",
+    "routes"
+  ],
+  "homepage": "https://github.com/jagaapple/now-next-routes",
+  "bugs": "https://github.com/jagaapple/now-next-routes/issues",
+  "license": "MIT",
+  "author": "Jaga Apple",
+  "contributors": [],
+  "files": [],
+  "main": "index.js",
+  "bin": "",
+  "man": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jagaapple/now-next-routes.git"
+  },
+  "scripts": {},
+  "config": {},
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.13.0",
+    "prettier": "^1.17.1",
+    "typescript": "^3.5.1"
+  },
+  "peerDependencies": {},
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "engineStrict": false,
+  "preferGlobal": true,
+  "private": true
+}
