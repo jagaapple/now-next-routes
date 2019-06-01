@@ -41,8 +41,6 @@ export class Route<Parameters extends object = Record<string, number | string>> 
   // ---------------------------------------------------------------------------------------------------------------------------
   /** Creates a new route which can create props for `<Link>` component of Next.js. */
   constructor(settings: Settings) {
-    if (typeof settings !== "object") throw new TypeError("Invalid argument type");
-
     this.pagePath = createStringWithLeadingSlash(settings.page);
     this.settings = settings;
     this.requiredParameters = this.settings.pattern.split("/").reduce((object: Partial<Parameters>, segment: string) => {
