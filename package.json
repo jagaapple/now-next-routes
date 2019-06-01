@@ -31,7 +31,7 @@
     "lint": "eslint ./src/**/*.ts",
     "fix": "eslint --fix ./src/**/*.ts",
     "pretest": "rm -rf ./.nyc_output ./coverage",
-    "test": "nyc --reporter=html --reporter=text mocha \"./src/**/*.spec.ts\" --reporter dot",
+    "test": "nyc --reporter=text --reporter=html mocha --reporter=dot src/**/*.spec.ts",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && npm run codecov",
     "codecov": "codecov"
   },
