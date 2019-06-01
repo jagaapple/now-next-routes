@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "name": "now-next-routes-example",
+  "builds": [
+    {
+      "src": "next.config.js",
+      "use": "@now/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "^\\/?$",
+      "dest": "/index"
+    },
+    {
+      "src": "^\\/users\\/?$",
+      "dest": "/users/users"
+    },
+    {
+      "src": "^\\/users\\/([^\\/]+?)\\/?$",
+      "dest": "/users/user?userId=$1"
+    },
+    {
+      "src": "^\\/users\\/([^\\/]+?)\\/comments\\/([^\\/]+?)\\/?$",
+      "dest": "/comments/comment?userId=$1&commentId=$2"
+    }
+  ]
+}
