@@ -59,7 +59,7 @@ export class Route<Parameters extends object = Record<string, number | string>> 
       const parameterName = segment.replace(":", "") as keyof Parameters;
       const parameter = parameters[parameterName];
 
-      return parameter.toString();
+      return `${parameter}`;
     });
 
     return {
