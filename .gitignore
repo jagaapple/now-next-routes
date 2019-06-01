@@ -34,6 +34,5 @@ lib
 
 
 # Generated files created by tests.
-.spec
 .nyc_output
 coverage

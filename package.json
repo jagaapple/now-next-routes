@@ -30,8 +30,8 @@
     "build": "tsc -p ./tsconfig.json",
     "lint": "eslint ./src/**/*.ts",
     "fix": "eslint --fix ./src/**/*.ts",
-    "pretest": "rm -rf ./.spec ./.nyc_output ./coverage && tsc -p ./tsconfig.spec.json",
-    "test": "nyc --reporter=html --reporter=text mocha \"./.spec/**/*.js\" -R dot",
+    "pretest": "rm -rf ./.nyc_output ./coverage",
+    "test": "nyc --reporter=html --reporter=text mocha \"./src/**/*.spec.ts\" --reporter dot",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && npm run codecov",
     "codecov": "codecov"
   },
@@ -49,7 +49,6 @@
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-prettier": "^3.1.0",
-    "istanbul": "^0.4.5",
     "mocha": "^6.1.4",
     "nyc": "^14.1.1",
     "prettier": "^1.17.1",
