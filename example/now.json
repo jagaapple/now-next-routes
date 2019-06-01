@@ -7,5 +7,22 @@
       "use": "@now/next"
     }
   ],
-  "routes": []
+  "routes": [
+    {
+      "src": "^\\/?$",
+      "dest": "/index"
+    },
+    {
+      "src": "^\\/users\\/?$",
+      "dest": "/users/users"
+    },
+    {
+      "src": "^\\/users\\/([^\\/]+?)\\/?$",
+      "dest": "/users/user?userId=$1"
+    },
+    {
+      "src": "^\\/users\\/([^\\/]+?)\\/comments\\/([^\\/]+?)\\/?$",
+      "dest": "/comments/comment?userId=$1&commentId=$2"
+    }
+  ]
 }
