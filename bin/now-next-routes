@@ -1,0 +1,52 @@
+#!/usr/bin/env node
+
+"use strict";
+
+const commander = require("commander");
+const version = require("../package.json").version;
+
+// When sub command does not exist, show help.
+if (process.argv.length === 2) process.argv.push('--help')
+
+commander.version(version, "-v, --version");
+
+commander
+  .command("generate <routes-file>")
+  .option("-i, --input <path>", "now.json file path")
+  .option("-o, --output <path>", "an output now.json file path")
+  .description("generate routes for now.json")
+  .action((filePath, options) => {
+    const path = require("path");
+    const fs = require("fs");
+    require("ts-node").register({
+      transpileOnly: true,
+      compilerOptions: {
+        module: "commonjs",
+        moduleResolution: "node",
+      },
+    });
+
+    const routesFilePath = path.resolve(filePath);
+    fs.statSync(routesFilePath);
+    const inputFilePath = path.resolve(options.input || "./now.json");
+    fs.statSync(inputFilePath);
+    const outputFilePath = path.resolve(options.output || "./now.json");
+    fs.statSync(outputFilePath);
+
+    const routes = require(routesFilePath).default;
+    if (typeof routes !== "object") throw new Error("Invalid format");
+
+    let currentSettings = require(inputFilePath);
+    if (typeof currentSettings !== "object") currentSettings = {};
+
+    const newRoutesSetting = Object.values(routes).map((route) => route.createRouteForNow());
+    const newSettings = { ...currentSettings, routes: newRoutesSetting };
+
+    fs.writeFileSync(outputFilePath, JSON.stringify(newSettings, undefined, "  ") + "\n");
+  });
+
+commander
+  .command("*")
+  .action((input) => console.error(`unknown command: ${input}`));
+
+commander.parse(process.argv);
