@@ -70,7 +70,7 @@ export class Route<Parameters extends object = Record<string, number | string>> 
 
   createRouteForNow() {
     const regExpRoutePattern = this.settings.pattern.replace(/\//g, "\\/").replace(/:[^\\/]+/g, "([^\\/]+?)");
-    const src = `^${regExpRoutePattern}\\/?$`;
+    const src = `^${regExpRoutePattern}\\/?$`.replace(/(\\\/)+/g, "\\/").replace(/^\^\\\\\/?\$$/, "\\/");
     const queryString = Object.keys(this.requiredParameters)
       .map((key: string, index: number) => {
         const parameterName = key as keyof Parameters;
@@ -79,7 +79,7 @@ export class Route<Parameters extends object = Record<string, number | string>> 
         return `${parameterName}=${value}`;
       })
       .join("&");
-    const dest = `${this.pagePath}?${queryString}`;
+    const dest = Object.keys(queryString).length > 0 ? `${this.pagePath}?${queryString}` : this.pagePath;
 
     return { src, dest };
   }
