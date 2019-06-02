@@ -1,4 +1,4 @@
-import { Route } from "../lib";
+import { Route } from "../../lib";
 
 export default {
   // Index

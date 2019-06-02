@@ -1,0 +1,44 @@
+{
+  "name": "now-next-routes-examples-merge-into-existing-json",
+  "version": "1.0.0",
+  "description": "An example project of now-next-routes",
+  "keywords": [],
+  "homepage": "https://github.com/jagaapple/now-next-routes/tree/master/example",
+  "bugs": "https://github.com/jagaapple/now-next-routes/issues",
+  "license": "MIT",
+  "author": "Jaga Apple",
+  "contributors": [],
+  "files": [],
+  "main": "",
+  "bin": "",
+  "man": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jagaapple/now-next-routes.git"
+  },
+  "scripts": {
+    "dev": "now dev",
+    "now-build": "next build"
+  },
+  "config": {},
+  "dependencies": {
+    "next": "^8.1.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "@types/next": "^8.0.5",
+    "@types/react": "^16.8.19",
+    "@types/react-dom": "^16.8.4",
+    "@zeit/next-typescript": "^1.1.1",
+    "now": "^15.3.0",
+    "typescript": "^3.4.5"
+  },
+  "peerDependencies": {},
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "engineStrict": false,
+  "preferGlobal": true,
+  "private": true
+}
