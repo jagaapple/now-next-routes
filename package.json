@@ -1,6 +1,6 @@
 {
   "name": "now-next-routes",
-  "version": "0.0.1",
+  "version": "1.0.0-alpha",
   "description": "Dynamic routes for Next.js on Now.",
   "keywords": [
     "zeit",
@@ -15,7 +15,14 @@
   "license": "MIT",
   "author": "Jaga Apple",
   "contributors": [],
-  "files": [],
+  "files": [
+    "bin",
+    "lib",
+    "CHANGELOG.md",
+    "CODE_OF_CONDUCT.md",
+    "LICENSE",
+    "README.md"
+  ],
   "main": "lib/index.js",
   "bin": {
     "now-next-routes": "bin/now-next-routes"
@@ -60,5 +67,5 @@
   },
   "engineStrict": false,
   "preferGlobal": true,
-  "private": true
+  "private": false
 }
