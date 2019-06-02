@@ -3,12 +3,12 @@
   "version": "1.0.0-alpha",
   "description": "Dynamic routes for Next.js on Now.",
   "keywords": [
-    "zeit",
-    "now",
-    "next",
     "next.js",
+    "now",
+    "routes",
     "router",
-    "routes"
+    "routing",
+    "typescript"
   ],
   "homepage": "https://github.com/jagaapple/now-next-routes",
   "bugs": "https://github.com/jagaapple/now-next-routes/issues",
@@ -39,8 +39,7 @@
     "fix": "eslint --fix ./src/**/*.ts",
     "pretest": "rm -rf ./.nyc_output ./coverage",
     "test": "nyc --reporter=text --reporter=html mocha --reporter=dot src/**/*.spec.ts",
-    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && npm run codecov",
-    "codecov": "codecov"
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "config": {},
   "dependencies": {

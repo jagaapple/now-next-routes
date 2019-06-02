@@ -41,6 +41,7 @@ export default () => (
 <div align="center">
 <a href="https://www.npmjs.com/package/now-next-routes"><img src="https://img.shields.io/npm/v/now-next-routes.svg" alt="npm"></a>
 <a href="https://circleci.com/gh/jagaapple/now-next-routes"><img src="https://img.shields.io/circleci/project/github/jagaapple/now-next-routes/master.svg" alt="CircleCI"></a>
+<a href="https://codecov.io/gh/jagaapple/now-next-routes"><img src="https://img.shields.io/codecov/c/github/jagaapple/now-next-routes.svg"></a>
 <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/github/license/jagaapple/now-next-routes.svg" alt="license"></a>
 <a href="https://twitter.com/jagaapple_tech"><img src="https://img.shields.io/badge/contact-%40jagaapple_tech-blue.svg" alt="@jagaapple_tech"></a>
 </div>
