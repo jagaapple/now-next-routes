@@ -31,7 +31,6 @@ commander
     const inputFilePath = path.resolve(options.input || "./now.json");
     fs.statSync(inputFilePath);
     const outputFilePath = path.resolve(options.output || "./now.json");
-    fs.statSync(outputFilePath);
 
     const routes = require(routesFilePath).default;
     if (typeof routes !== "object") throw new Error("Invalid format");
