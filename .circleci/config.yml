@@ -22,7 +22,7 @@ jobs:
           command: "npm run lint"
       - run:
           name: "Execute tests"
-          command: "npm test"
+          command: "npm test && npm run coverage"
       - run:
           name: "Build"
           command: "npm run build"
@@ -46,7 +46,7 @@ jobs:
           command: "npm run lint"
       - run:
           name: "Execute tests"
-          command: "npm test"
+          command: "npm test && npm run coverage"
       - run:
           name: "Build"
           command: "npm run build"
@@ -70,7 +70,7 @@ jobs:
           command: "npm run lint"
       - run:
           name: "Execute tests"
-          command: "npm test"
+          command: "npm test && npm run coverage"
       - run:
           name: "Build"
           command: "npm run build"
