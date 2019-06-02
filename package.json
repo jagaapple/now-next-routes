@@ -15,7 +15,14 @@
   "license": "MIT",
   "author": "Jaga Apple",
   "contributors": [],
-  "files": [],
+  "files": [
+    "bin",
+    "lib",
+    "CHANGELOG.md",
+    "CODE_OF_CONDUCT.md",
+    "LICENSE",
+    "README.md"
+  ],
   "main": "lib/index.js",
   "bin": {
     "now-next-routes": "bin/now-next-routes"
