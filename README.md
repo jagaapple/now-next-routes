@@ -64,6 +64,13 @@ export default () => (
 - [Recipes](#recipes)
   - [Gets type safety in a page when handling queries](#gets-type-safety-in-a-page-when-handling-queries)
   - [Preserves original `now.json`](#preserves-original-nowjson)
+- [API](#api)
+  - [CLI](#cli)
+    - [`generate`](#generate)
+  - [`Route` Class](#route-class)
+    - [`constructor<Parameters>(settings: Settings): Route`](#constructorparameterssettings-settings-route)
+    - [`Route.prototype.getLinkProps(parameters: Parameters): LinkProps<Parameters>`](#routeprototypegetlinkpropsparameters-parameters-linkpropsparameters)
+    - [`Route.prototype.createRouteForNow(): object`](#routeprototypecreateroutefornow-object)
 - [Contributing to now-next-routes](#contributing-to-now-next-routes)
 - [License](#license)
 
@@ -267,6 +274,72 @@ $ npx now-next-routes generate --output now-production.json routes.ts
 
 If your `now.json` already has custom `routes` property, it is possible to merge generated routes to it and you should use
 `--merge` option.
+
+
+## API
+### CLI
+```
+$ npx now-next-routes --help
+Usage: now-next-routes [options] [command]
+
+Options:
+  -v, --version                     output the version number
+  -h, --help                        output usage information
+
+Commands:
+  generate [options] <routes-file>  generate routes for now.json
+  *
+```
+
+#### `generate`
+```
+$ npx now-next-routes generate --help                                                                                                                                                                              (06/03 06:45:54)
+Usage: generate [options] <routes-file>
+
+generate routes for now.json
+
+Options:
+  -i, --input <path>   now.json file path
+  -o, --output <path>  an output now.json file path
+  -m, --merge          merge into existing "routes" property
+  -h, --help           output usage information
+```
+
+### `Route` Class
+#### `constructor<Parameters>(settings: Settings): Route`
+```ts
+new Route<{ userId: number }>({ page: "/users/user", pattern: "/users/:userId" });
+```
+
+Returns a new object of `Route` class.
+
+- `Parameters` ... A generic type to specify types of dynamic parameters (for TypeScript).
+- `settings: Settings`
+  - `page: string` ... A page file path in `/pages` directory of Next.js.
+  - `pattern: string` ... A mapping path pattern. The format `:parameterName` will be mapped to dynamic parameters.
+
+#### `Route.prototype.getLinkProps(parameters: Parameters): LinkProps<Parameters>`
+```ts
+route.getLinkProps({ userId: number });
+```
+
+Returns `LinkProps<Parameters>` object.
+
+- `Parameters` ... Types of dynamic parameters you given to constructor (for TypeScript).
+- `LinkProps<Parameters>`
+  - `href: object`
+    - `pathname: string` ... A base path name. This is a page file path in `/pages` in general.
+    - `query: Partial<Parameters>` ... Displayed URL string in web browsers.
+  - `as: string` ... A mapped URL.
+
+#### `Route.prototype.createRouteForNow(): object`
+```ts
+route.createRouteForNow();
+```
+
+Creates an object for `routes` propety in `now.json` for ZEIT Now. This method is used in CLI, so **you don't need to use this
+method in general**.
+This method will be changed without any notices.
 
 
 ## Contributing to now-next-routes
