@@ -103,11 +103,11 @@ you need is to write `now.json` with `@now/next` .
 and `@now/next` conforms it automatically. However you need use `@now/node` or `@now/node-server` if you adopt custom servers.
 In other words, to use custom servers in Next.js on Now is bad.
 
-The best way is to use no custom servers and set `routes` porperty in `now.json` to your application routes, but it has very low
+The best way is to use no custom servers and set `routes` property in `now.json` to your application routes, but it has very low
 maintainability because you need to write the same route settings twice and complex regular expressions.
 
-now-next-routes was created in order to resolve these issues. now-next-routes provides a command to craete `routes` property in
-`now.json` from a specific route definitions and also provides functions to craete links high type safety.
+now-next-routes was created in order to resolve these issues. now-next-routes provides a command to create `routes` property in
+`now.json` from a specific route definitions and also provides functions to create links high type safety.
 
 
 ## Quick Start
@@ -347,7 +347,7 @@ Returns `LinkProps<Parameters>` object.
 route.createRouteForNow();
 ```
 
-Creates an object for `routes` propety in `now.json` for ZEIT Now. This method is used in CLI, so **you don't need to use this
+Creates an object for `routes` property in `now.json` for ZEIT Now. This method is used in CLI, so **you don't need to use this
 method in general**.
 This method will be changed without any notices.
 
