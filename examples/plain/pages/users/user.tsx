@@ -2,6 +2,7 @@ import { NextFC } from "next";
 import Router from "next/router";
 import Link from "next/link";
 
+import { DynamicParameters } from "../../../../lib";
 import routes from "../../routes";
 import { CommentModel } from "../../models/comment";
 
@@ -47,7 +48,7 @@ const Component: NextFC<InitialProps> = (props: InitialProps) => {
   );
 };
 
-type Query = ReturnType<typeof routes["users/user"]["getLinkProps"]>["href"]["query"];
+type Query = DynamicParameters<typeof routes["users/user"]>;
 Component.getInitialProps = ({ query }: { query: Query }) => {
   const userId = Number(query.userId);
 

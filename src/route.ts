@@ -93,3 +93,5 @@ export class Route<Parameters extends object = Record<string, number | string>> 
     return { src, dest };
   }
 }
+
+export type DynamicParameters<T extends Route> = ReturnType<T["getLinkProps"]>["href"]["query"];

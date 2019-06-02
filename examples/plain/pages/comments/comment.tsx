@@ -2,6 +2,7 @@ import { NextFC } from "next";
 import Router from "next/router";
 import Link from "next/link";
 
+import { DynamicParameters } from "../../../../lib";
 import routes from "../../routes";
 
 type InitialProps = {
@@ -26,7 +27,7 @@ const Component: NextFC<InitialProps> = (props: InitialProps) => {
   );
 };
 
-type Query = ReturnType<typeof routes["comments/comment"]["getLinkProps"]>["href"]["query"];
+type Query = DynamicParameters<typeof routes["comments/comment"]>;
 Component.getInitialProps = ({ query }: { query: Query }) => {
   const userId = Number(query.userId);
   const commentId = Number(query.commentId);
