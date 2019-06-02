@@ -1,0 +1,43 @@
+{
+  "version": 2,
+  "name": "now-next-routes-examples-merge-into-existing-json",
+  "builds": [
+    {
+      "src": "next.config.js",
+      "use": "@now/next"
+    },
+    {
+      "src": "static/about-us.html",
+      "use": "@now/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/about-us.html",
+      "dest": "static/about-us.html"
+    },
+    {
+      "src": "/about.html",
+      "status": 301,
+      "headers": {
+        "Location": "/about-us.html"
+      }
+    },
+    {
+      "src": "^\\/?$",
+      "dest": "/index"
+    },
+    {
+      "src": "^\\/users\\/?$",
+      "dest": "/users/users"
+    },
+    {
+      "src": "^\\/users\\/([^\\/]+?)\\/?$",
+      "dest": "/users/user?userId=$1"
+    },
+    {
+      "src": "^\\/users\\/([^\\/]+?)\\/comments\\/([^\\/]+?)\\/?$",
+      "dest": "/comments/comment?userId=$1&commentId=$2"
+    }
+  ]
+}
