@@ -265,6 +265,9 @@ $ npx now-next-routes generate --input now.sample.json routes.ts
 $ npx now-next-routes generate --output now-production.json routes.ts
 ```
 
+If your `now.json` already has custom `routes` property, it is possible to merge generated routes to it and you should use
+`--merge` option.
+
 
 ## Contributing to now-next-routes
 Bug reports and pull requests are welcome on GitHub at
