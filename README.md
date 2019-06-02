@@ -71,6 +71,7 @@ export default () => (
     - [`constructor<Parameters>(settings: Settings): Route`](#constructorparameterssettings-settings-route)
     - [`Route.prototype.getLinkProps(parameters: Parameters): LinkProps<Parameters>`](#routeprototypegetlinkpropsparameters-parameters-linkpropsparameters)
     - [`Route.prototype.createRouteForNow(): object`](#routeprototypecreateroutefornow-object)
+    - [`DynamicParameters<T extends Route>`](#dynamicparameterst-extends-route)
 - [Contributing to now-next-routes](#contributing-to-now-next-routes)
 - [License](#license)
 
@@ -240,16 +241,22 @@ when calling constructors](#gets-more-type-safety).
 ```ts
 const userPageLinkProps = routes["users/user"].getLinkProps({ userId: "1" });
                                                               ^^^^^^
-                                        // Type 'string' is not assignable to type 'number'.ts(2322)
+                // Type 'string' is not assignable to type 'number'. ts(2322)
 ```
 
 
 ## Recipes
 ### Gets type safety in a page when handling queries
 ```ts
-type Query = ReturnType<typeof routes["users/user"]["getLinkProps"]>["href"]["query"];
+import { DynamicParameters } from "now-next-routes";
+
+type Query = DynamicParameters<typeof routes["users/user"]>;
 Component.getInitialProps = (ctx) => {
   const query = ctx as Query;
+  const userId = query.user_id;
+                       ^^^^^^^
+  // Property 'user_id' does not exist on type 'Partial<{ userId: number; }>'.
+  // Did you mean 'userId'? ts(2551)
 
   ...
 
@@ -257,8 +264,8 @@ Component.getInitialProps = (ctx) => {
 };
 ```
 
-Returned value from `getLinkProps()` includes a type you specify to routes as a generic type. You can use this type and get type
-safety when handling queries in `getInitialProps` .
+`DynamicParameters` type exported by now-next-routes accepts a type of `Route` object. It returns a type of dynamic parameters.
+It is helpful for handling queries type safety in `getInitialProps` .
 
 ### Preserves original `now.json`
 By default, `now-next-routes` overwrites or creates `now.json` file. It is possible to output as other file when you specify
@@ -325,7 +332,7 @@ route.getLinkProps({ userId: number });
 
 Returns `LinkProps<Parameters>` object.
 
-- `Parameters` ... Types of dynamic parameters you given to constructor (for TypeScript).
+- `Parameters` ... Types of dynamic parameters you gave to constructor (for TypeScript).
 - `LinkProps<Parameters>`
   - `href: object`
     - `pathname: string` ... A base path name. This is a page file path in `/pages` in general.
@@ -340,6 +347,16 @@ route.createRouteForNow();
 Creates an object for `routes` propety in `now.json` for ZEIT Now. This method is used in CLI, so **you don't need to use this
 method in general**.
 This method will be changed without any notices.
+
+#### `DynamicParameters<T extends Route>`
+```ts
+type Parameters = { userId: number };
+
+const route = new Route<Parameters>({ page: "users/user", pattern: "/users/:userId" })
+type Query = DynamicParameters<typeof route>; // Partial<{ userId: number }>
+```
+
+Returns a type you gave to a constructor of `Route` . A returned type is weak type.
 
 
 ## Contributing to now-next-routes
