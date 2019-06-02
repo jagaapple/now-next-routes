@@ -1,1 +1,1 @@
-export { Route } from "./route";
+export { Route, DynamicParameters } from "./route";
