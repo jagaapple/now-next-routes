@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "name": "now-next-routes-example",
+  "name": "now-next-routes-examples-plain",
   "builds": [
     {
       "src": "next.config.js",
