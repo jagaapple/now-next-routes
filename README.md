@@ -19,8 +19,10 @@ export default () => (
   </Link>
 );
 
+// $ npx now-next-routes generate routes.ts
+// then ... now.json is generated!!
+//
 // /now.json
-// GENERATED AUTOMATICALLY!!
 {
   ...
   "routes": [
