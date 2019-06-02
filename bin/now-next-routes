@@ -14,7 +14,7 @@ commander
   .command("generate <routes-file>")
   .option("-i, --input <path>", "now.json file path")
   .option("-o, --output <path>", "an output now.json file path")
-  .option("-m, --merge", "merges into existing \"routes\" property")
+  .option("-m, --merge", "merge into existing \"routes\" property")
   .description("generate routes for now.json")
   .action((filePath, options) => {
     const path = require("path");
