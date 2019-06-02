@@ -1,6 +1,6 @@
 {
   "name": "now-next-routes",
-  "version": "0.0.1",
+  "version": "1.0.0-alpha",
   "description": "Dynamic routes for Next.js on Now.",
   "keywords": [
     "zeit",
