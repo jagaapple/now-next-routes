@@ -21,6 +21,9 @@ jobs:
           name: "Execute linters"
           command: "npm run lint"
       - run:
+          name: "Execute tests"
+          command: "npm test"
+      - run:
           name: "Build"
           command: "npm run build"
   node_v10:
@@ -42,6 +45,9 @@ jobs:
           name: "Execute linters"
           command: "npm run lint"
       - run:
+          name: "Execute tests"
+          command: "npm test"
+      - run:
           name: "Build"
           command: "npm run build"
   node_v8:
@@ -62,6 +68,9 @@ jobs:
       - run:
           name: "Execute linters"
           command: "npm run lint"
+      - run:
+          name: "Execute tests"
+          command: "npm test"
       - run:
           name: "Build"
           command: "npm run build"
