@@ -1,4 +1,10 @@
 # Changelog
+## 1.1.1 (2019-06-07)
+This version is for re-publishing in order to fix built files.
+
+The pull request is #15.
+
+
 ## 1.1.0 (2019-06-07)
 - Add a method to get a full path and mapped URL #13 - [@jagaapple](https://github.com/jagaapple)
 - Modify English in readme #11 - [@jagaapple](https://github.com/jagaapple)
