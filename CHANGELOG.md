@@ -1,4 +1,13 @@
 # Changelog
+## 1.1.0 (2019-06-07)
+- Add a method to get a full path and mapped URL #13 - [@jagaapple](https://github.com/jagaapple)
+- Modify English in readme #11 - [@jagaapple](https://github.com/jagaapple)
+
+---
+
+The pull request is #14.
+
+
 ## 1.0.0 (2019-06-02)
 - Initial public release - [@jagaapple](https://github.com/jagaapple)
 
