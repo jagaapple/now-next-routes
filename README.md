@@ -73,6 +73,7 @@ export default () => (
   - [`Route` Class](#route-class)
     - [`constructor<Parameters>(settings: Settings): Route`](#constructorparameterssettings-settings-route)
     - [`Route.prototype.getLinkProps(parameters: Parameters): LinkProps<Parameters>`](#routeprototypegetlinkpropsparameters-parameters-linkpropsparameters)
+    - [`Route.prototype.getPaths(parameters: Parameters): Paths`](#routeprototypegetpathsparameters-parameters-paths)
     - [`Route.prototype.createRouteForNow(): object`](#routeprototypecreateroutefornow-object)
     - [`DynamicParameters<T extends Route>`](#dynamicparameterst-extends-route)
 - [Contributing to now-next-routes](#contributing-to-now-next-routes)
@@ -340,6 +341,18 @@ Returns `LinkProps<Parameters>` object.
   - `href: object`
     - `pathname: string` ... A base path name. This is a page file path in `/pages` in general.
     - `query: Partial<Parameters>` ... Displayed URL string in web browsers.
+  - `as: string` ... A mapped URL.
+
+#### `Route.prototype.getPaths(parameters: Parameters): Paths`
+```ts
+route.getPaths({ userId: number });
+```
+
+Returns `Paths` object.
+
+- `Parameters` ... Types of dynamic parameters you gave to constructor (for TypeScript).
+- `Paths`
+  - `href: string` ... A full path which contains a page file path in `/pages` and query string.
   - `as: string` ... A mapped URL.
 
 #### `Route.prototype.createRouteForNow(): object`

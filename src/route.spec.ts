@@ -1,4 +1,5 @@
 import { expect } from "chai";
+import * as sinon from "sinon";
 
 import { Route } from "./route";
 
@@ -60,6 +61,64 @@ describe("Route", function() {
         const linkProps = route.getLinkProps(parameters);
 
         expect(linkProps.as).to.eq(`/dummies/${parameters.dummyId}/${parameters.sampleId}`);
+      });
+    });
+  });
+
+  // ---------------------------------------------------------------------------------------------------------------------------
+  // Route.prototype.getPaths
+  // ---------------------------------------------------------------------------------------------------------------------------
+  describe("Route.prototype.getPaths", function() {
+    afterEach(function() {
+      sinon.restore();
+    });
+
+    it('should return a value of "as" property in Route.prototype.getLinkProps', function() {
+      const page = "/samples/sample";
+      const pattern = "/dummies/:dummyId/samples/:sampleId";
+      const route = new Route<{ dummyId: number; sampleId: number }>({ page, pattern });
+
+      const expectedAs = "EXPECTED_AS";
+      sinon.stub(route, "getLinkProps").returns({ href: { pathname: "", query: {} }, as: expectedAs });
+
+      const parameters = { dummyId: 123, sampleId: 456 };
+      const paths = route.getPaths(parameters);
+
+      expect(paths.as).to.eq(expectedAs);
+    });
+
+    context("when a setting's pattern does not have dynamic parameters,", function() {
+      it('should return a page path as "href"', function() {
+        const page = "/dummies/dummies";
+        const pattern = "/dummies";
+        const route = new Route({ page, pattern });
+        const path = route.getPaths({});
+
+        expect(path.href).to.eq(page);
+      });
+    });
+
+    context("when a setting's pattern has dynamic parameters,", function() {
+      it('should return a full path with query string as "href"', function() {
+        const page = "/samples/sample";
+        const pattern = "/dummies/:dummyId/samples/:sampleId";
+        const route = new Route<{ dummyId: number; sampleId: number }>({ page, pattern });
+        const parameters = { dummyId: 123, sampleId: 456 };
+        const path = route.getPaths(parameters);
+
+        expect(path.href).to.eq(`${page}?dummyId=123&sampleId=456`);
+      });
+
+      context("some parameter is null,", function() {
+        it('should return a full path with query string as "href"', function() {
+          const page = "/samples/sample";
+          const pattern = "/dummies/:dummyId/samples/:sampleId";
+          const route = new Route<{ dummyId: number; sampleId: number | undefined }>({ page, pattern });
+          const parameters = { dummyId: 123, sampleId: undefined };
+          const path = route.getPaths(parameters);
+
+          expect(path.href).to.eq(`${page}?dummyId=123`);
+        });
       });
     });
   });

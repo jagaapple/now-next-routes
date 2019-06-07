@@ -25,6 +25,13 @@ type LinkProps<Parameters> = {
   as: string;
 };
 
+type Paths = {
+  /** A full path which contains a page file path in `/pages` and query string. */
+  href: string;
+  /** A mapped URL. */
+  as: string;
+};
+
 export class Route<Parameters extends object = Record<string, number | string>> {
   // ---------------------------------------------------------------------------------------------------------------------------
   // Variables
@@ -71,6 +78,25 @@ export class Route<Parameters extends object = Record<string, number | string>> 
       href: { query: parameters, pathname: this.pagePath },
       as: createStringWithLeadingSlash(as.join("/")),
     };
+  }
+
+  /** Gets a full path and mapped URL. */
+  getPaths(parameters: Parameters): Paths {
+    const linkProps = this.getLinkProps(parameters);
+    const query = linkProps.href.query;
+    const queryString = Object.keys(query)
+      .reduce((array: string[], key: string) => {
+        const value = query[key as keyof Parameters] as number | string | undefined;
+        if (value == undefined) return array;
+
+        array.push(`${key}=${value}`);
+
+        return array;
+      }, [])
+      .join("&");
+    const href = queryString ? `${linkProps.href.pathname}?${queryString}` : linkProps.href.pathname;
+
+    return { href, as: linkProps.as };
   }
 
   /**
