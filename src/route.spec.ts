@@ -182,35 +182,35 @@ describe("Route", function() {
     });
 
     context("when a setting's pattern does not have dynamic parameters,", function() {
-      it('should return page given to constructor as "dest"', function() {
-        const page = "/dummies/dummies";
+      it('should return page given to constructor without leading slashes as "dest"', function() {
+        const basePagePath = "dummies/dummies";
         const pattern = "/dummies/dummies/dummies";
-        const route = new Route({ page, pattern });
+        const route = new Route({ page: `/${basePagePath}`, pattern });
         const routeForNow = route.createRouteForNow();
 
-        expect(routeForNow.dest).to.eq(page);
+        expect(routeForNow.dest).to.eq(basePagePath);
       });
     });
 
     context("when a setting's pattern have one dynamic parameter,", function() {
       it('should return page given to constructor with parameters converted like query string as "dest"', function() {
-        const page = "/dummies/dummy";
+        const basePagePath = "dummies/dummy";
         const pattern = "/dummies/:dummyId";
-        const route = new Route<{ dummyId: number }>({ page, pattern });
+        const route = new Route<{ dummyId: number }>({ page: `/${basePagePath}`, pattern });
         const routeForNow = route.createRouteForNow();
 
-        expect(routeForNow.dest).to.eq(`${page}?dummyId=$1`);
+        expect(routeForNow.dest).to.eq(`${basePagePath}?dummyId=$1`);
       });
     });
 
     context("when a setting's pattern have two or more dynamic parameter,", function() {
       it('should return page given to constructor with parameters converted like query string as "dest"', function() {
-        const page = "/samples/sample";
+        const basePagePath = "samples/sample";
         const pattern = "/dummies/:dummyId/samples/:sampleId";
-        const route = new Route<{ dummyId: number; sampleId: number }>({ page, pattern });
+        const route = new Route<{ dummyId: number; sampleId: number }>({ page: `/${basePagePath}`, pattern });
         const routeForNow = route.createRouteForNow();
 
-        expect(routeForNow.dest).to.eq(`${page}?dummyId=$1&sampleId=$2`);
+        expect(routeForNow.dest).to.eq(`${basePagePath}?dummyId=$1&sampleId=$2`);
       });
     });
   });
