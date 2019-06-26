@@ -1,6 +1,6 @@
 {
   "name": "now-next-routes",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Dynamic routes for Next.js on Now.",
   "keywords": [
     "next.js",
@@ -37,7 +37,7 @@
     "build": "tsc -p ./tsconfig.json",
     "lint": "eslint ./src/**/*.ts",
     "fix": "eslint --fix ./src/**/*.ts",
-    "prepublish": "npm run build",
+    "prepublishOnly": "npm run build",
     "pretest": "rm -rf ./.nyc_output ./coverage",
     "test": "nyc --reporter=text --reporter=html mocha --reporter=dot src/**/*.spec.ts",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"

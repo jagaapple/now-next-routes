@@ -1,4 +1,10 @@
 # Changelog
+## 1.1.2 (2019-06-26)
+- Modify dest values #17 - [@jagaapple](https://github.com/jagaapple)
+
+The pull request is #16.
+
+
 ## 1.1.1 (2019-06-07)
 This version is for re-publishing in order to fix built files.
 

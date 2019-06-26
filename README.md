@@ -28,11 +28,11 @@ export default () => (
   "routes": [
     {
       "src": "^\\/users\\/([^\\/]+?)\\/?$",
-      "dest": "/users/user?userId=$1"
+      "dest": "users/user?userId=$1"
     },
     {
       "src": "^\\/users\\/([^\\/]+?)\\/profile\\/?$",
-      "dest": "/users/profile?userId=$1"
+      "dest": "users/profile?userId=$1"
     }
   ]
 }
@@ -188,19 +188,19 @@ $ npx now-next-routes generate routes.ts
   "routes": [
     {
       "src": "^\\/?$",
-      "dest": "/index"
+      "dest": "index"
     },
     {
       "src": "^\\/users\\/?$",
-      "dest": "/users/users"
+      "dest": "users/users"
     },
     {
       "src": "^\\/users\\/([^\\/]+?)\\/?$",
-      "dest": "/users/user?userId=$1"
+      "dest": "users/user?userId=$1"
     },
     {
       "src": "^\\/users\\/([^\\/]+?)\\/comments\\/([^\\/]+?)\\/?$",
-      "dest": "/comments/comment?userId=$1&commentId=$2"
+      "dest": "comments/comment?userId=$1&commentId=$2"
     }
   ]
 }
