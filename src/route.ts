@@ -114,7 +114,9 @@ export class Route<Parameters extends object = Record<string, number | string>> 
         return `${parameterName}=${value}`;
       })
       .join("&");
-    const dest = Object.keys(queryString).length > 0 ? `${this.pagePath}?${queryString}` : this.pagePath;
+    const pagePathWithoutLeadingSlash = this.pagePath.replace(/^\/+/, "");
+    const dest =
+      Object.keys(queryString).length > 0 ? `${pagePathWithoutLeadingSlash}?${queryString}` : pagePathWithoutLeadingSlash;
 
     return { src, dest };
   }
