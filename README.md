@@ -1,5 +1,5 @@
 <h1 align="center">📦 DEPRECATED 📦</h1>
-This package has been deprecated and recommend to use "next-typed-routes" instead.
+<h4 align="center">This package has been deprecated and recommend to use "next-typed-routes" instead.</h4>
 
 ---
 
