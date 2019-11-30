@@ -1,3 +1,8 @@
+<h1 align="center">📦 DEPRECATED 📦</h1>
+<h4 align="center">This package has been deprecated and recommend to use "next-typed-routes" instead.</h4>
+
+---
+
 <h1 align="center">now-next-routes</h1>
 
 <h4 align="center">🔜 Dynamic routes for Next.js on Now 🔙</h4>
